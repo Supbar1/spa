@@ -19,30 +19,13 @@ const ProductsTable = () => {
     setIsModalOpen((state) => !state);
     setModalId(id);
   };
-
-  const ChoosenPage = () => {
-    let { page } = useParams();
-    console.log(page);
-    let startIndex = (Number(page?.slice(1, 2)) - 1) * 5;
-    if (page === undefined){
+  let { page } = useParams();
+  console.log(page);
+  let startIndex = (Number(page?.slice(1, 2)) - 1) * 5;
+  if (page === undefined){
 startIndex = 0
-    }
-    return (
-      <>
-        {products.slice(startIndex, startIndex + 5).map((item) => (
-          <TableRow
-            key={item.id}
-            style={{ backgroundColor: `${item.color}` }}
-            onClick={() => openModal(item.id)}
-          >
-            <th scope="row">{item.id}</th>
-            <th>{item.name}</th>
-            <th>{item.year}</th>
-          </TableRow>
-        ))}
-      </>
-    );
-  };
+  }
+
 
   return (
     <ProductsTableStyled className="table">
@@ -54,10 +37,31 @@ startIndex = 0
         </tr>
       </thead>
       <tbody>
-        <Routes>
-          <Route path="/" element={<ChoosenPage />} />
-          <Route path="/:page" element={<ChoosenPage />} />
-        </Routes>
+        {/* <Routes>
+          <Route path="/" element={products.slice(startIndex, startIndex + 5).map((item) => (
+          <TableRow
+            key={item.id}
+            style={{ backgroundColor: `${item.color}` }}
+            onClick={() => openModal(item.id)}
+          >
+            <th scope="row">{item.id}</th>
+            <th>{item.name}</th>
+            <th>{item.year}</th>
+          </TableRow>
+        ))}/>
+        
+          <Route path="/:page" element={products.slice(startIndex, startIndex + 5).map((item) => (
+          <TableRow
+            key={item.id}
+            style={{ backgroundColor: `${item.color}` }}
+            onClick={() => openModal(item.id)}
+          >
+            <th scope="row">{item.id}</th>
+            <th>{item.name}</th>
+            <th>{item.year}</th>
+          </TableRow>
+        ))} />
+        </Routes> */}
       </tbody>
     </ProductsTableStyled>
   );
