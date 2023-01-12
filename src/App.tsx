@@ -13,7 +13,7 @@ const AppContainer = styled.div`
   font-family: "Roboto";
   font-size: 1.2rem;
   line-height: 1.9;
-  overflow-y: hidden;
+  overflow-x: auto;
   letter-spacing: 1px;
 `;
 

@@ -20,7 +20,7 @@ const SearchBar = () => {
   return (
     <div>
       <p>
-        Type item index:
+        Type item index: &nbsp;
         <input type="number" defaultValue="" onChange={handleChange} />
       </p>
       <h2>{productIndex === undefined ? null : products[productIndex].name}</h2>

@@ -6,15 +6,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
   text-align: center;
-  top: 0%;
-  left: 0%;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
-  margin-top: auto;
-  margin-left: auto;
   position: fixed;
 `;
 const ShopWindow = styled.div`
@@ -23,40 +18,22 @@ const ShopWindow = styled.div`
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  width: max(600px, 50%);
+  width: min(600px, 100%);
   height: min(300px, 100%);
   background-color: white;
   border-radius: 30px;
-  /* overflow-y: auto; */
-  &::-webkit-scrollbar {
-    width: 0.5em;
-  }
-  &::-webkit-scrollbar-thumb {
-    border-radius: 100vw;
-    width: 15px;
-    height: 15px;
-    background: var(--clr-accent-300);
-  }
 `;
 const Header = styled.h2`
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
-  padding: 2rem;
-  font-size: var(--fs-900);
   width: 100%;
 `;
-const Table = styled.table`
-  padding: 1rem;
-  text-align: center;
-`;
-const TableRow = styled.tr`
-  padding: 1rem;
-`;
+
 const TableData = styled.td`
-  padding: 1rem;
+  padding: 0.8rem;
   @media (max-width: 500px) {
-    padding: 0.5rem;
+    padding: 0.1rem;
     font-size: 1rem;
   }
 `;
@@ -81,7 +58,7 @@ const Modal = ({ id }: ModalType) => {
             Close
           </button>
         </Header>
-        <Table className="table">
+        <table className="table">
           <thead>
             <tr>
               {Object.keys(newItem).map((value: any, index) => {
@@ -100,7 +77,7 @@ const Modal = ({ id }: ModalType) => {
               })}
             </tr>
           </tbody>
-        </Table>
+        </table>
       </ShopWindow>
     </Container>
   );
