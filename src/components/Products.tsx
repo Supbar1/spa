@@ -26,7 +26,6 @@ const Products = () => {
     <Container>
       {isModalOpen ? <Modal id={modalId === undefined ? 0 : modalId} /> : null}
       <Header>Products:</Header>
-      <SearchBar />
       {!openList ? (
         <Link to={`/:1`}>
           <button
@@ -40,6 +39,7 @@ const Products = () => {
       ) : null}
       {openList ? (
         <>
+          <SearchBar />
           <ProductsTable />
           <Pagination />
         </>
