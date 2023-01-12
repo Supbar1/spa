@@ -11,7 +11,6 @@ const SearchBar = () => {
     currentTarget: input,
   }: React.ChangeEvent<HTMLInputElement>) => {
     if (0 < Number(input.value) && 7 > Number(input.value)) {
-      console.log(input.value);
       return setProductIndex(Number(input.value) - 1);
     }
     return setProductIndex(undefined);

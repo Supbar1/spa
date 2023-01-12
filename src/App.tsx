@@ -3,6 +3,7 @@ import ProductsProvider from "./Context";
 import React from "react";
 import Products from "./components/Products";
 import styled from "styled-components";
+import { BrowserRouter } from "react-router-dom";
 
 const AppContainer = styled.div`
   width: 100vw;
@@ -21,7 +22,9 @@ const App = () => (
   <React.Fragment>
     <ProductsProvider>
       <AppContainer>
-        <Products />
+        <BrowserRouter>
+          <Products />
+        </BrowserRouter>
       </AppContainer>
     </ProductsProvider>
   </React.Fragment>

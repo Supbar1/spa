@@ -8,6 +8,7 @@ interface ProductsProviderProps {
 
 interface ProductsContextType {
   products: any[];
+  activeLink:string; setActiveLink:React.Dispatch<React.SetStateAction<string>>;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   currentPage: number;
@@ -25,6 +26,7 @@ export const useProductsContext = () => {
 const ProductsProvider = ({ children }: ProductsProviderProps) => {
   const [products, setProducts] = useState<any[]>([]);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [activeLink, setActiveLink] = useState<string>("1");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [modalId, setModalId] = useState<number | undefined>(undefined);
   const apiProducts = async (): Promise<any> => {
@@ -45,6 +47,7 @@ const ProductsProvider = ({ children }: ProductsProviderProps) => {
         setIsModalOpen,
         modalId,
         setModalId,
+        activeLink, setActiveLink,
       }}
     >
       {children}
