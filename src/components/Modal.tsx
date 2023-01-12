@@ -24,8 +24,9 @@ const ShopWindow = styled.div`
   flex-direction: column;
   text-align: center;
   width: max(600px, 50%);
-  height: min(700px, 100%);
+  height: min(300px, 100%);
   background-color: white;
+  border-radius: 30px;
   /* overflow-y: auto; */
   &::-webkit-scrollbar {
     width: 0.5em;
@@ -71,7 +72,7 @@ const Modal = ({ id }: ModalType) => {
     <Container>
       <ShopWindow>
         <Header>
-          <h2>Choosen Product</h2>
+          <h2>Choosen Product:</h2>
           <button
             type="button"
             className="btn btn-danger"
@@ -80,7 +81,7 @@ const Modal = ({ id }: ModalType) => {
             Close
           </button>
         </Header>
-        <Table>
+        <Table className="table">
           <thead>
             <tr>
               {Object.keys(newItem).map((value: any, index) => {

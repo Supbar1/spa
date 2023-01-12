@@ -10,14 +10,11 @@ const Header = styled.h1`
   letter-spacing: 1px;
 `;
 const Container = styled.div`
-  /* min-width: 50vw;
-  min-height: 50vh; */
   width: 100%;
   border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: right; */
   text-decoration: none;
   text-align: center;
 `;
@@ -28,7 +25,7 @@ const Products = () => {
   return (
     <Container>
       {isModalOpen ? <Modal id={modalId === undefined ? 0 : modalId} /> : null}
-      <Header>Products</Header>
+      <Header>Products:</Header>
 
       <SearchBar />
       <ProductsTable />

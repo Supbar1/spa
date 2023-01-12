@@ -17,16 +17,14 @@ const AppContainer = styled.div`
   letter-spacing: 1px;
 `;
 
-function App() {
-  return (
-    <React.Fragment>
-      <ProductsProvider>
-        <AppContainer>
-          <Products />
-        </AppContainer>
-      </ProductsProvider>
-    </React.Fragment>
-  );
-}
+const App = () => (
+  <React.Fragment>
+    <ProductsProvider>
+      <AppContainer>
+        <Products />
+      </AppContainer>
+    </ProductsProvider>
+  </React.Fragment>
+);
 
 export default App;

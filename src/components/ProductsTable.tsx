@@ -5,9 +5,6 @@ const ProductsTableStyled = styled.table`
   max-width: 400px;
 `;
 
-const TableRow = styled.tr`
-  /* height: 100px; */
-`;
 const ProductsTable = () => {
   const { setModalId, setIsModalOpen, products, currentPage } =
     useProductsContext();
@@ -19,15 +16,15 @@ const ProductsTable = () => {
   return (
     <ProductsTableStyled className="table">
       <thead>
-        <TableRow>
+        <tr>
           <th scope="col">Id</th>
           <th scope="col">Name</th>
           <th scope="col">Year</th>
-        </TableRow>
+        </tr>
       </thead>
       <tbody>
         {products.slice(startIndex, startIndex + 5).map((item) => (
-          <TableRow
+          <tr
             key={item.id}
             style={{ backgroundColor: `${item.color}`, border: "none" }}
             onClick={() => openModal(item.id)}
@@ -35,7 +32,7 @@ const ProductsTable = () => {
             <th scope="row">{item.id}</th>
             <th>{item.name}</th>
             <th>{item.year}</th>
-          </TableRow>
+          </tr>
         ))}
       </tbody>
     </ProductsTableStyled>
