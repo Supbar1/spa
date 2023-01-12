@@ -21,29 +21,15 @@ const Container = styled.div`
 `;
 const Products = () => {
   const { isModalOpen, modalId } = useProductsContext();
-  const [openList, setOpenList] = useState<boolean>(false);
   return (
     <Container>
       {isModalOpen ? <Modal id={modalId === undefined ? 0 : modalId} /> : null}
       <Header>Products:</Header>
-      {!openList ? (
-        <Link to={`/:1`}>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => setOpenList((state) => !state)}
-          >
-            Show List of Products
-          </button>
-        </Link>
-      ) : null}
-      {openList ? (
         <>
           <SearchBar />
           <ProductsTable />
           <Pagination />
         </>
-      ) : null}
     </Container>
   );
 };

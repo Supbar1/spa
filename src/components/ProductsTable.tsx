@@ -1,10 +1,6 @@
 import { useProductsContext } from "./../Context";
 import styled from "styled-components";
-import {
-  Routes,
-  Route,
-  useParams,
-} from "react-router-dom";
+import { Routes, Route, useParams } from "react-router-dom";
 const ProductsTableStyled = styled.table`
   max-width: 400px;
 `;
@@ -18,8 +14,7 @@ const TableRow = styled.tr`
 `;
 
 const ProductsTable = () => {
-  const { setModalId, setIsModalOpen, products } =
-    useProductsContext();
+  const { setModalId, setIsModalOpen, products } = useProductsContext();
   const openModal = (id: number) => {
     setIsModalOpen((state) => !state);
     setModalId(id);
@@ -27,7 +22,11 @@ const ProductsTable = () => {
 
   const ChoosenPage = () => {
     let { page } = useParams();
-    const startIndex = (Number(page?.slice(1, 2)) - 1)*5;
+    console.log(page);
+    let startIndex = (Number(page?.slice(1, 2)) - 1) * 5;
+    if (page === undefined){
+startIndex = 0
+    }
     return (
       <>
         {products.slice(startIndex, startIndex + 5).map((item) => (
@@ -56,6 +55,7 @@ const ProductsTable = () => {
       </thead>
       <tbody>
         <Routes>
+          <Route path="/" element={<ChoosenPage />} />
           <Route path="/:page" element={<ChoosenPage />} />
         </Routes>
       </tbody>
