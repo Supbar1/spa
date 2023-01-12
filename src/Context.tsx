@@ -8,7 +8,8 @@ interface ProductsProviderProps {
 
 interface ProductsContextType {
   products: any[];
-  activeLink:string; setActiveLink:React.Dispatch<React.SetStateAction<string>>;
+  activeLink: string;
+  setActiveLink: React.Dispatch<React.SetStateAction<string>>;
   isModalOpen: boolean;
   setIsModalOpen: React.Dispatch<React.SetStateAction<boolean>>;
   currentPage: number;
@@ -47,7 +48,8 @@ const ProductsProvider = ({ children }: ProductsProviderProps) => {
         setIsModalOpen,
         modalId,
         setModalId,
-        activeLink, setActiveLink,
+        activeLink,
+        setActiveLink,
       }}
     >
       {children}

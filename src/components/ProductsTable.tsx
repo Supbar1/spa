@@ -18,7 +18,7 @@ const TableRow = styled.tr`
 `;
 
 const ProductsTable = () => {
-  const { setModalId, setIsModalOpen, products, setCurrentPage } =
+  const { setModalId, setIsModalOpen, products } =
     useProductsContext();
   const openModal = (id: number) => {
     setIsModalOpen((state) => !state);
