@@ -1,4 +1,4 @@
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import ProductsProvider from "./Context";
 import React from "react";
 import Products from "./components/Products";
@@ -10,7 +10,10 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  font-family: "Roboto";
+  font-size: 1.2rem;
+  line-height: 1.9;
+  overflow-y: hidden;
 `;
 
 function App() {

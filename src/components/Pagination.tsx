@@ -12,7 +12,7 @@ const Pagination = () => {
   console.log(currentPage);
 
   return (
-    <nav>
+    <nav style={{ zIndex: "-1" }}>
       <ul className="pagination">
         <li className="page-item">
           <a
@@ -29,10 +29,7 @@ const Pagination = () => {
             key={page}
             className={page === currentPage ? "page-item active" : "page-item"}
           >
-            <a
-              className="page-link"
-              onClick={() => setCurrentPage(page)}
-            >
+            <a className="page-link" onClick={() => setCurrentPage(page)}>
               {page}
             </a>
           </li>

@@ -18,11 +18,16 @@ const Container = styled.div`
   position: fixed;
 `;
 const ShopWindow = styled.div`
+  border: 12px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   text-align: center;
   width: max(600px, 50%);
   height: min(700px, 100%);
   background-color: white;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   &::-webkit-scrollbar {
     width: 0.5em;
   }
@@ -36,9 +41,24 @@ const ShopWindow = styled.div`
 const Header = styled.h2`
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
   padding: 2rem;
   font-size: var(--fs-900);
+  width: 100%;
+`;
+const Table = styled.table`
+  padding: 1rem;
+  text-align: center;
+`;
+const TableRow = styled.tr`
+  padding: 1rem;
+`;
+const TableData = styled.td`
+  padding: 1rem;
+  @media (max-width: 500px) {
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
 `;
 interface ModalType {
   id: number;
@@ -46,24 +66,22 @@ interface ModalType {
 
 const Modal = ({ id }: ModalType) => {
   const { products, setIsModalOpen } = useProductsContext();
-
   const newItem = products[id - 1];
-  const employee = {
-    id: 1,
-    name: "Alice",
-    salary: 100,
-  };
+
   return (
     <Container>
       <ShopWindow>
-        <Header onClick={() => setIsModalOpen(false)}>Product</Header>
-        <table>
+        <Header>
+          <span>Product</span>
+          <span onClick={() => setIsModalOpen(false)}>X</span>
+        </Header>
+        <Table>
           <thead>
             <tr>
               {Object.keys(newItem).map((value: any, index) => {
                 return (
                   <th key={index}>
-                    <td>{value}</td>
+                    <TableData>{value}</TableData>
                   </th>
                 );
               })}
@@ -72,15 +90,11 @@ const Modal = ({ id }: ModalType) => {
           <tbody>
             <tr>
               {Object.values(newItem).map((value: any, index) => {
-                return (
-                  <th key={index}>
-                    <td>{value}</td>
-                  </th>
-                );
+                return <TableData key={index}>{value}</TableData>;
               })}
             </tr>
           </tbody>
-        </table>
+        </Table>
       </ShopWindow>
     </Container>
   );
