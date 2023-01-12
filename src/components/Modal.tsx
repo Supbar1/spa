@@ -33,8 +33,8 @@ const Header = styled.div`
 const TableData = styled.td`
   padding: 0.8rem;
   @media (max-width: 500px) {
-    padding: 0.5rem;
-    font-size: 0.7rem;
+    padding: 0.2rem;
+    font-size: 0.5rem;
   }
 `;
 interface ModalType {
