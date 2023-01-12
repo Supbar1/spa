@@ -1,22 +1,27 @@
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import ProductsProvider from "./Context";
+import React from "react";
+import Products from "./components/Products";
+import styled from "styled-components";
 
+const AppContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <ProductsProvider>
+        <AppContainer>
+          <Products />
+        </AppContainer>
+      </ProductsProvider>
+    </React.Fragment>
   );
 }
 
