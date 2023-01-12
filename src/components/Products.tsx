@@ -11,7 +11,6 @@ const Header = styled.h1`
 `;
 const Container = styled.div`
   width: 100%;
-  border: 1px solid black;
   display: flex;
   flex-direction: column;
   align-items: center;

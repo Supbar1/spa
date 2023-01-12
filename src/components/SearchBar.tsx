@@ -16,7 +16,6 @@ const SearchBar = () => {
     }
     return setProductIndex(undefined);
   };
-  console.log(productIndex);
 
   return (
     <div>

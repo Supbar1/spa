@@ -4,7 +4,14 @@ import styled from "styled-components";
 const ProductsTableStyled = styled.table`
   max-width: 400px;
 `;
-
+const TableRow = styled.tr`
+  border: none;
+  border: 2px solid transparent;
+  :hover {
+    cursor: pointer;
+    border: 2px solid black;
+  }
+`;
 const ProductsTable = () => {
   const { setModalId, setIsModalOpen, products, currentPage } =
     useProductsContext();
@@ -24,15 +31,15 @@ const ProductsTable = () => {
       </thead>
       <tbody>
         {products.slice(startIndex, startIndex + 5).map((item) => (
-          <tr
+          <TableRow
             key={item.id}
-            style={{ backgroundColor: `${item.color}`, border: "none" }}
+            style={{ backgroundColor: `${item.color}` }}
             onClick={() => openModal(item.id)}
           >
             <th scope="row">{item.id}</th>
             <th>{item.name}</th>
             <th>{item.year}</th>
-          </tr>
+          </TableRow>
         ))}
       </tbody>
     </ProductsTableStyled>
