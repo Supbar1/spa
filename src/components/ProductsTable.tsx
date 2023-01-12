@@ -1,15 +1,12 @@
 import { useProductsContext } from "./../Context";
 import styled from "styled-components";
 
-const PrductsTable = styled.table`
-  /* min-height: 500px; */
+const ProductsTableStyled = styled.table`
+  max-width: 400px;
 `;
-const TableElement = styled.th`
-  padding: 1rem;
-  height: 10px;
-`;
+
 const TableRow = styled.tr`
-  height: 100px;
+  /* height: 100px; */
 `;
 const ProductsTable = () => {
   const { setModalId, setIsModalOpen, products, currentPage } =
@@ -20,12 +17,12 @@ const ProductsTable = () => {
     setModalId(id);
   };
   return (
-    <PrductsTable>
+    <ProductsTableStyled className="table">
       <thead>
         <TableRow>
-          <TableElement>Id</TableElement>
-          <TableElement>Name</TableElement>
-          <TableElement>Year</TableElement>
+          <th scope="col">Id</th>
+          <th scope="col">Name</th>
+          <th scope="col">Year</th>
         </TableRow>
       </thead>
       <tbody>
@@ -35,13 +32,13 @@ const ProductsTable = () => {
             style={{ backgroundColor: `${item.color}`, border: "none" }}
             onClick={() => openModal(item.id)}
           >
-            <TableElement>{item.id}</TableElement>
-            <TableElement>{item.name}</TableElement>
-            <TableElement>{item.year}</TableElement>
+            <th scope="row">{item.id}</th>
+            <th>{item.name}</th>
+            <th>{item.year}</th>
           </TableRow>
         ))}
       </tbody>
-    </PrductsTable>
+    </ProductsTableStyled>
   );
 };
 

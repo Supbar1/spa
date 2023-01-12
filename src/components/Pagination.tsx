@@ -11,41 +11,42 @@ const Pagination = () => {
   const pages = _.range(1, pagesCount + 1);
   console.log(currentPage);
 
-  return (
-    <nav style={{ zIndex: "-1" }}>
-      <ul className="pagination">
-        <li className="page-item">
-          <a
-            className="page-link"
-            onClick={() =>
-              setCurrentPage((page) => (page - 1 === 0 ? 1 : page - 1))
-            }
-          >
-            <span aria-hidden="true">&laquo;</span>
+  return ( isModalOpen ? null : <nav>
+    <ul className="pagination">
+      <li className="page-item">
+        <a
+          className="page-link"
+          onClick={() =>
+            setCurrentPage((page) => (page - 1 === 0 ? 1 : page - 1))
+          }
+        >
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      {pages.map((page: number) => (
+        <li
+          key={page}
+          className={page === currentPage ? "page-item active" : "page-item"}
+        >
+          <a className="page-link" onClick={() => setCurrentPage(page)}>
+            {page}
           </a>
         </li>
-        {pages.map((page: number) => (
-          <li
-            key={page}
-            className={page === currentPage ? "page-item active" : "page-item"}
-          >
-            <a className="page-link" onClick={() => setCurrentPage(page)}>
-              {page}
-            </a>
-          </li>
-        ))}
-        <li className="page-item">
-          <a
-            className="page-link"
-            onClick={() =>
-              setCurrentPage((page) => (page + 1 === 3 ? 2 : page + 1))
-            }
-          >
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+      ))}
+      <li className="page-item">
+        <a
+          className="page-link"
+          onClick={() =>
+            setCurrentPage((page) => (page + 1 === 3 ? 2 : page + 1))
+          }
+        >
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+    
+    
   );
 };
 

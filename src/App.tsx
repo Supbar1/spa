@@ -14,6 +14,7 @@ const AppContainer = styled.div`
   font-size: 1.2rem;
   line-height: 1.9;
   overflow-y: hidden;
+  letter-spacing: 1px;
 `;
 
 function App() {

@@ -18,7 +18,6 @@ const Container = styled.div`
   position: fixed;
 `;
 const ShopWindow = styled.div`
-  border: 12px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,8 +71,14 @@ const Modal = ({ id }: ModalType) => {
     <Container>
       <ShopWindow>
         <Header>
-          <span>Product</span>
-          <span onClick={() => setIsModalOpen(false)}>X</span>
+          <h2>Choosen Product</h2>
+          <button
+            type="button"
+            className="btn btn-danger"
+            onClick={() => setIsModalOpen(false)}
+          >
+            Close
+          </button>
         </Header>
         <Table>
           <thead>
