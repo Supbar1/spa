@@ -23,30 +23,31 @@ const ProductsTableStyled = styled.table`
 `;
 
 const Products = () => {
-  const { modalId} = useProductsContext();
+  const { modalId } = useProductsContext();
 
   return (
     <Container>
       {modalId ? <Modal id={modalId === undefined ? 0 : modalId} /> : null}
       <Header>Products:</Header>
-        <SearchBar />
-        <ProductsTableStyled className="table">
-          <thead>
-            <tr>
-              <th scope="col">Id</th>
-              <th scope="col">Name</th>
-              <th scope="col">Year</th>
-            </tr>
-          </thead>
-          <tbody>
-            <Routes>
-              <Route path="/" element={<ChoosenPage />} />
-              <Route path="/:page" element={<ChoosenPage />} />
-            </Routes>
-          </tbody>
-        </ProductsTableStyled>
-    < Pagination />
-      
+      <p>App is responsive. Check link on mobile:</p>
+      <p>https://single-page-application-blue.vercel.app</p>
+      <SearchBar />
+      <ProductsTableStyled className="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <Routes>
+            <Route path="/" element={<ChoosenPage />} />
+            <Route path="/:page" element={<ChoosenPage />} />
+          </Routes>
+        </tbody>
+      </ProductsTableStyled>
+      <Pagination />
     </Container>
   );
 };
