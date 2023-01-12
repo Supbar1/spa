@@ -23,10 +23,10 @@ const App = () => (
     <ProductsProvider>
       <AppContainer>
         <BrowserRouter>
-        <Routes>
-        <Route path="/:page" element={<Products />} />
-          {/* <Products /> */}
-        </Routes>
+          <Routes>
+            <Route path="*" element={<Products />} />
+            <Route path="/:page/*" element={<Products />} />
+          </Routes>
         </BrowserRouter>
       </AppContainer>
     </ProductsProvider>

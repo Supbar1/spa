@@ -23,7 +23,7 @@ const ShopWindow = styled.div`
   background-color: white;
   border-radius: 30px;
 `;
-const Header = styled.h2`
+const Header = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
@@ -42,7 +42,7 @@ interface ModalType {
 }
 
 const Modal = ({ id }: ModalType) => {
-  const { products, setIsModalOpen } = useProductsContext();
+  const { products,  setModalId } = useProductsContext();
   const newItem = products[id - 1];
 
   return (
@@ -53,7 +53,7 @@ const Modal = ({ id }: ModalType) => {
           <button
             type="button"
             className="btn btn-danger"
-            onClick={() => setIsModalOpen(false)}
+            onClick={() => setModalId(undefined)}
           >
             Close
           </button>
@@ -61,20 +61,16 @@ const Modal = ({ id }: ModalType) => {
         <table className="table">
           <thead>
             <tr>
-              {Object.keys(newItem).map((value: any, index) => {
-                return (
-                  <th key={index}>
-                    <TableData>{value}</TableData>
-                  </th>
-                );
-              })}
+              {Object.keys(newItem).map((value: any, index) => (
+                <th key={index}>{value}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
             <tr>
-              {Object.values(newItem).map((value: any, index) => {
-                return <TableData key={index}>{value}</TableData>;
-              })}
+              {Object.values(newItem).map((value: any, index) => (
+                <TableData key={index}>{value}</TableData>
+              ))}
             </tr>
           </tbody>
         </table>
