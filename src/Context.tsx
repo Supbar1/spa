@@ -1,17 +1,25 @@
 import React, { useState, createContext, ReactNode, useEffect } from "react";
 import config from "./components/services/config.json";
 import http from "./components/services/httpService";
-
 interface ProductsProviderProps {
   children: ReactNode;
 }
 
 interface ProductsContextType {
-  products: any[];
+  products: ProductType[];
+  setProducts: React.Dispatch<React.SetStateAction<ProductType[]>>;
   modalId: number | undefined;
   setModalId: React.Dispatch<React.SetStateAction<number | undefined>>;
+  totalItems: number;
+  setTotalItems: React.Dispatch<React.SetStateAction<number>>;
 }
-
+export interface ProductType {
+  id: number;
+  color: string;
+  name: string;
+  pantone_value: string;
+  year: number;
+}
 const ProductsContext = createContext({} as ProductsContextType);
 
 export const useProductsContext = () => {
@@ -19,22 +27,27 @@ export const useProductsContext = () => {
 };
 
 const ProductsProvider = ({ children }: ProductsProviderProps) => {
-  const [products, setProducts] = useState<any[]>([]);
   const [modalId, setModalId] = useState<number | undefined>(undefined);
-  const apiProducts = async (): Promise<any> => {
+  const [products, setProducts] = useState<ProductType[]>([]);
+  const [totalItems, setTotalItems] = useState<number>(0);
+
+  const apiPagesNumber = async (): Promise<void> => {
     const { data } = await http.get(config.api);
-    setProducts(data.data);
+    setTotalItems(data.total);
   };
   useEffect(() => {
-    apiProducts();
+    apiPagesNumber();
   }, []);
 
   return (
     <ProductsContext.Provider
       value={{
         products,
+        setProducts,
         modalId,
         setModalId,
+        totalItems,
+        setTotalItems,
       }}
     >
       {children}

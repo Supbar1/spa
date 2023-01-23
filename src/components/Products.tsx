@@ -3,50 +3,35 @@ import styled from "styled-components";
 import Modal from "./Modal";
 import Pagination from "./Pagination";
 import SearchBar from "./SearchBar";
-import { Routes, Route } from "react-router-dom";
-import ChoosenPage from "./ChoosenPage";
+import ProductsTable from "./ProductsTable";
 
-const Header = styled.h1`
-  font-weight: bold;
-  letter-spacing: 1px;
-`;
 const Container = styled.div`
-  width: 100%;
+  width: 420x;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
   text-align: center;
-`;
-const ProductsTableStyled = styled.table`
-  max-width: 400px;
+
+  @media (max-width: 420px) {
+    p {
+      font-size: 0.8rem;
+      margin: 0.2rem;
+    }
+    width: 100%;
+  }
 `;
 
 const Products = () => {
   const { modalId } = useProductsContext();
-
   return (
     <Container>
-      {modalId ? <Modal id={modalId === undefined ? 0 : modalId} /> : null}
-      <Header>Products:</Header>
-      <p>App is responsive. Check link on mobile:</p>
+      {modalId === undefined ? null : <Modal />}
+      <p>Responsive Single Page App.</p>
+      <p>Check link on mobile:</p>
       <p>https://single-page-application-blue.vercel.app</p>
       <SearchBar />
-      <ProductsTableStyled className="table">
-        <thead>
-          <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          <Routes>
-            <Route path="/" element={<ChoosenPage />} />
-            <Route path="/:page" element={<ChoosenPage />} />
-          </Routes>
-        </tbody>
-      </ProductsTableStyled>
+      <ProductsTable />
       <Pagination />
     </Container>
   );

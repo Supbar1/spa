@@ -12,24 +12,27 @@ const AppContainer = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: "Roboto";
-  font-size: 1.2rem;
   line-height: 1.9;
   overflow-x: auto;
   letter-spacing: 1px;
+  font-size: 1rem;
+  @media (max-width: 420px) {
+    font-size: 0.8rem;
+  }
 `;
 
 const App = () => (
   <React.Fragment>
-    <ProductsProvider>
-      <AppContainer>
-        <BrowserRouter>
+    <AppContainer>
+      <BrowserRouter>
+        <ProductsProvider>
           <Routes>
-            <Route path="*" element={<Products />} />
-            <Route path="/:page/*" element={<Products />} />
+          <Route path="/*" element={<Products />} />
+          <Route path="/:page/:per_page/*" element={<Products />} />
           </Routes>
-        </BrowserRouter>
-      </AppContainer>
-    </ProductsProvider>
+        </ProductsProvider>
+      </BrowserRouter>
+    </AppContainer>
   </React.Fragment>
 );
 

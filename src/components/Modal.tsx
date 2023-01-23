@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { useProductsContext } from "./../Context";
+import { ProductType, useProductsContext } from "./../Context";
 
 const Container = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +12,7 @@ const Container = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   position: fixed;
+  z-index: 1;
 `;
 const ShopWindow = styled.div`
   display: flex;
@@ -30,20 +32,28 @@ const Header = styled.div`
   width: 100%;
 `;
 
+const TableHeader = styled.th`
+  padding: 0.8rem;
+  @media (max-width: 500px) {
+    padding: 0.17rem;
+    font-size: 0.6rem;
+  }
+`;
 const TableData = styled.td`
   padding: 0.8rem;
   @media (max-width: 500px) {
-    padding: 0.2rem;
+    padding: 0.17rem;
     font-size: 0.5rem;
   }
 `;
-interface ModalType {
-  id: number;
-}
 
-const Modal = ({ id }: ModalType) => {
-  const { products,  setModalId } = useProductsContext();
-  const newItem = products[id - 1];
+const Modal = () => {
+  const { modalId, setModalId, products } = useProductsContext();
+
+  const itemIndex: number = products.findIndex(
+    (product) => product.id === modalId
+  );
+  const modalItem: ProductType = products[itemIndex];
 
   return (
     <Container>
@@ -61,15 +71,15 @@ const Modal = ({ id }: ModalType) => {
         <table className="table">
           <thead>
             <tr>
-              {Object.keys(newItem).map((value: any, index) => (
-                <th key={index}>{value}</th>
+              {Object.keys(modalItem).map((value: string) => (
+                <TableHeader key={value}>{value}</TableHeader>
               ))}
             </tr>
           </thead>
           <tbody>
             <tr>
-              {Object.values(newItem).map((value: any, index) => (
-                <TableData key={index}>{value}</TableData>
+              {Object.values(modalItem).map((value: string) => (
+                <TableData key={value}>{value}</TableData>
               ))}
             </tr>
           </tbody>
