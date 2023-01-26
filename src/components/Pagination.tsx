@@ -31,20 +31,16 @@ const Pagination = () => {
   const { totalItems } = useProductsContext();
   const navigate = useNavigate();
   const { per_page, page } = useParams();
-  let perPage = Number(per_page?.substring(9));
 
-  const isLinkValid = (page || per_page) === undefined || perPage === 0;
-  //?????????????????????
-  if (isLinkValid) {
-    perPage = 6;
-  }
+  const currentPage = !!page ? Number(page) : 1;
+  let perPage = !!per_page ? Number(per_page?.substring(9)) : 5;
+  perPage = isNaN(perPage) || perPage === 0 || perPage > 12 ? 5 : perPage;
 
-  const pagesQuantity = Math.ceil(totalItems / perPage);
+  let pagesQuantity = Math.ceil(totalItems / perPage);
 
   let pages = _.range(1, pagesQuantity + 1);
-
   const isPageExist = (page: number) => {
-    return (0 < page && pagesQuantity! >= page);
+    return 0 < page && pagesQuantity! >= page;
   };
 
   const handlePageChange = async ({
@@ -70,7 +66,6 @@ const Pagination = () => {
     navigate(`/1/per_page=${itemsPerPage}`);
   };
   const sizes: number[] = [2, 3, 4, 5, 10, 12];
-
   return (
     <>
       <Navigation>
@@ -78,16 +73,16 @@ const Pagination = () => {
           <li className="page-item">
             <LinkStyled
               to={
-                page === "1"
-                  ? `/1/per_page=${perPage}`
-                  : `/${Number(page) - 1}/per_page=${perPage}`
+                currentPage === 1
+                  ? ``
+                  : `/${currentPage - 1}/per_page=${perPage}`
               }
             >
               &laquo;
             </LinkStyled>
           </li>
           {pages.map((pageMapped: number) => (
-            <StyledLi key={pageMapped} isActive={pageMapped === Number(page)}>
+            <StyledLi key={pageMapped} isActive={pageMapped === currentPage}>
               <LinkStyled to={`/${pageMapped}/per_page=${perPage}`}>
                 {pageMapped}
               </LinkStyled>
@@ -96,9 +91,9 @@ const Pagination = () => {
           <li className="page-item">
             <LinkStyled
               to={
-                Number(page) === pagesQuantity
+                currentPage === pagesQuantity
                   ? `/${pagesQuantity}/per_page=${perPage}`
-                  : `/${Number(page) + 1}/per_page=${perPage}`
+                  : `/${currentPage + 1}/per_page=${perPage}`
               }
             >
               &raquo;

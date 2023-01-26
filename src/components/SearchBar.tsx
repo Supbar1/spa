@@ -78,11 +78,11 @@ const SearchBar = () => {
   const handleChange = ({
     currentTarget: input,
   }: React.ChangeEvent<HTMLInputElement>) => {
-    const isInputValidNumber =
-      0 < Number(input.value) && totalItems! >= Number(input.value);
+    const inputValue = Number(input.value);
+    const isInputValid = 0 < inputValue && totalItems! >= inputValue;
 
-    if (isInputValidNumber) {
-      return setProductIndex(Number(input.value));
+    if (isInputValid) {
+      return setProductIndex(inputValue);
     }
     return setProductIndex(undefined);
   };

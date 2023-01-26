@@ -1,9 +1,9 @@
-import { useProductsContext } from "../Context";
+import { useProductsContext } from "./Context";
 import styled from "styled-components";
-import Modal from "./Modal";
-import Pagination from "./Pagination";
-import SearchBar from "./SearchBar";
-import ProductsTable from "./ProductsTable";
+import Modal from "./components/Modal";
+import Pagination from "./components/Pagination";
+import SearchBar from "./components/SearchBar";
+import ProductsTable from "./components/ProductsTable";
 
 const Container = styled.div`
   width: 420x;

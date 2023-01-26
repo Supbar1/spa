@@ -1,7 +1,7 @@
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import ProductsProvider from "./Context";
 import React from "react";
-import Products from "./components/Products";
+import Products from "./AppLayout";
 import styled from "styled-components";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
@@ -27,8 +27,8 @@ const App = () => (
       <BrowserRouter>
         <ProductsProvider>
           <Routes>
-          <Route path="/*" element={<Products />} />
-          <Route path="/:page/:per_page/*" element={<Products />} />
+            <Route path="/*" element={<Products />} />
+            <Route path="/:page/:per_page/*" element={<Products />} />
           </Routes>
         </ProductsProvider>
       </BrowserRouter>
